@@ -36,31 +36,38 @@ console.log(getComputerChoice);
 
 function determineWinner(userChoice, computerChoice){
   if ( userChoice == computerChoice){
+	console.log("tie")
     return 'tie'
   }else if (userChoice == 'rock'){
     if (computerChoice =='paper'){
+      console.log("computer won")
       return 'computer won'
     }else{
-      return 'user won'
+      console.log("user won")
+	  return 'user won'
     }
   }else if(userChoice =='paper'){
     if(computerChoice =='sciessors'){
-      return 'computer won'
+      console.log("computer won")
+	  return 'computer won'
     }else if(computerChoice == 'rock'){
-      return 'user won'
+		console.log("user won")
+		return 'user won'
     }
   }else if (userChoice =='sciessors'){
     if(computerChoice =='rock'){
+      console.log("computer won")
       return 'computer won'
     }else if(computerChoice =='paper'){
-      return 'user won'
+      console.log("user won")
+	  return 'user won'
     }
   }
 }
-userChoice = getUserChoice('rock')
-computerChoice = getComputerChoice()
+
 
 function playGame(){
-  userChoice = getUserChoice('rock')
-  
+	determineWinner(getUserChoice('rock'),getComputerChoice()) 
 }
+
+playGame()
