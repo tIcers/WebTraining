@@ -38,3 +38,34 @@ const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'
 const longFavoriteWords = favoriteWords.filter(favoriteWords => {
 	return favoriteWords.length > 7;
 })
+
+
+const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+
+const foundAnimal = animals.findIndex(animals => {
+	return animals ==='elephant'
+})
+
+const startsWithS = animals.findIndex(animal => {
+	return animal[0] === 's' ? true : false;
+  });
+  
+// reduce function
+
+const newNumbers = [1, 3, 5, 7];
+
+const newSum = newNumbers.reduce((accumulator, currentValue)=>{
+	console.log('The value of accumulator: ', accumulator)	
+	console.log('The value of currentValue: ', currentValue)
+	return accumulator + currentValue
+},10)
+console.log(newSum)
+
+const interestingWords = words.filter(words => {
+	return words.length > 5
+})
+
+console.log(interestingWords.every((word) => { 
+	return word.length > 5
+  } ));
+  
