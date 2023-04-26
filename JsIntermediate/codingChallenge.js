@@ -53,3 +53,23 @@ const acceptEverything = (arr) => {
 	})
 }
 
+const numbers = [2, 7, 9, 171, 52, 33, 14]
+
+const toSquare = num => num * num
+
+// Write your code here:
+const squareNums = arr => arr.map(toSquare) 
+
+
+
+
+const greetings = ['hello', 'hi', 'heya', 'oi', 'hey', 'yo'];
+
+const shoutGreetings =arr => arr.map(function(elements){
+	return elements.toUpperCase() + '!'
+})
+
+console.log(shoutGreetings(greetings))
+// Should print [ 'HELLO!', 'HI!', 'HEYA!', 'OI!', 'HEY!', 'YO!' ]
+
+
