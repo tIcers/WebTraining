@@ -10,5 +10,33 @@ const reversedSentence = reverseArray(sentence)
 console.log(reversedSentence) 
 // Should print ['This', 'will', 'all', 'make', 'sense.'];
 
+// Write your code here:
+
+const aliens = ["Blorgous", "Glamyx", "Wegord", "SpaceKing"];
+
+function greetAliens(aliens){
+for(let i = 0; i < aliens.length; i ++){
+	console.log("Oh powerful " + aliens[i] + ", " + "we humans offer our unconditional surrender!")
+}
+// When you're ready to test your code, uncomment the below and run:
+
+
+}
+greetAliens(aliens);
+
+// Write your code here:
+
+
+
+
+
+
+
+
+// When you're ready to test your code, uncomment the below and run:
+
+const animals = ['panda', 'turtle', 'giraffe', 'hippo', 'sloth', 'human'];
+
+console.log(convertToBaby(animals)) 
 
 
