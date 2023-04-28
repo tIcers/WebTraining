@@ -104,9 +104,25 @@ function justCoolStuff(arr1, arr2){
   
   console.log(justCoolStuff(myStuff, coolStuff));
   // Should print [ 'fruit-by-the-foot', 'skateboards', 'my room' ]
-  
-  function isTheDinnerVegan(arr){
-	return {
-		name:
-	}
-  }
+
+// Write your code here:
+
+function isTheDinnerVegan(meal){
+	return meal.every(food => food.source ==='plant')  
+}
+
+
+
+
+
+
+// Feel free to comment out the code below to test your function
+/*
+const dinner = [{name: 'hamburger', source: 'meat'},
+ {name: 'cheese', source: 'dairy'},
+  {name: 'ketchup', source:'plant'},
+   {name: 'bun', source: 'plant'}, {name: 'dessert twinkies', source:'unknown'}];
+
+console.log(isTheDinnerVegan(dinner))
+// Should print false
+*/
