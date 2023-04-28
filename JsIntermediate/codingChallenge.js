@@ -126,3 +126,113 @@ const dinner = [{name: 'hamburger', source: 'meat'},
 console.log(isTheDinnerVegan(dinner))
 // Should print false
 */
+
+const speciesArray = [ {speciesName:'shark', numTeeth:50}, {speciesName:'dog', numTeeth:42}, {speciesName:'alligator', numTeeth:80}, {speciesName:'human', numTeeth:32}];
+
+// Write your code here:
+function sortSpeciesByTeeth(speciesArray){
+	return speciesArray.sort(function(a, b){
+		return a.numTeeth - b.numTeeth
+	})
+}
+
+
+
+
+
+
+// Feel free to comment out the code below when you're ready to test your function!
+
+console.log(sortSpeciesByTeeth(speciesArray))
+
+// Should print:
+// [ { speciesName: 'human', numTeeth: 32 },
+//   { speciesName: 'dog', numTeeth: 42 },
+//   { speciesName: 'shark', numTeeth: 50 },
+//   { speciesName: 'alligator', numTeeth: 80 } ]
+
+function findMyKeys(array){
+	let i = 0;
+	while(i < array.length){
+		if(array[i] === 'keys'){
+			return i;
+		}
+		i++;
+	}
+	return -1
+}	
+const randomStuff = ['credit card', 'screwdriver', 'receipt', 'gum', 'keys', 'used gum', 'plastic spoon'];
+
+console.log(findMyKeys(randomStuff))
+
+
+const dogFactory = (name, breed, weight) => {
+    return {
+        _name: name,
+        _breed: breed,
+        _weight: weight,
+        get name() {
+            return this._name;
+        },
+        set name(newName) {
+            this._name = newName;
+        },
+        get breed() {
+            return this._breed;
+        },
+        set breed(newBreed) {
+            this._breed = newBreed;
+        },
+        get weight() {
+            return this._weight;
+        },
+        set weight(newWeight) {
+            this._weight = newWeight;
+        },
+        bark() {
+            return 'ruff! ruff!'
+        },
+        eatTooManyTreats() {
+            this._weight++
+        }
+    }
+}
+
+/*
+// Solution to checkpoint 1:
+const dogFactory = (name, breed, weight) => {
+      return {
+            name: name,
+            breed: breed,
+            weight: weight
+      }
+}
+
+// Solution to checkpoint 2:
+const dogFactory = (name, breed, weight) => {
+      return {
+            _name: name,
+            _breed: breed,
+            _weight: weight,
+            get name() {
+                  return this._name;
+            },
+            set name(newName) {
+                  this._name = newName;
+            },
+            get breed() {
+                  return this._breed;
+            },
+            set breed(newBreed) {
+                  this._breed = newBreed;
+            },
+            get weight() {
+                  return this._weight;
+            },
+            set weight(newWeight) {
+                  this._weight = newWeight;
+            }
+      }
+}
+
+*/
