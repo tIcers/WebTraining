@@ -44,9 +44,43 @@ function validateCred(arrayOfCards){
 	return totalNum % 2 ==  0 
 }
 
-validateCred(valid1)
+validateCred(invalid3)
+
+function findInvalidCards(arr){
+	let invalidCardsList = []
+	for(let i = 0; i < arr.length; i++){
+		if(!validateCred(arr[i])){
+			invalidCardsList.push(arr[i])
+		}
+	}
+	console.log(`invalid card list `, invalidCardsList)
+	return invalidCardsList
+}
+
+const invalidCardTest = findInvalidCards(batch)
+console.log(invalidCardTest)
 
 
+function idInvalidCardCompanies(invalidCards){
+	const companies = {
+		3:'Amex',
+		4:'Visa',
+		5:'Mastercard',
+		6:'Discover'
+	}	
 
+	let invalidCompanies = []
 
-
+	for(let i = 0; i < invalidCards.length; i ++){
+		firstDigitOfCard = invalidCards[i][0]
+		if(companies[firstDigitOfCard]){
+			if(!invalidCompanies.includes(companies[firstDigitOfCard])){
+				invalidCompanies.push(companies[firstDigitOfCard])
+			}	
+			else{
+				consolole.log('Coompany not found')
+			}
+		}
+		return invalidCompanies
+	}
+}
