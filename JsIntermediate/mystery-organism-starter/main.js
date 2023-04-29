@@ -13,7 +13,22 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
-
+function pAequorFactory(specimenNum, dna){
+  return {
+    specimenNum,
+    dna,
+    mutate() {
+     let randomIndex = Math.floor(Math.random()* this.dna.length) 
+     let currentIndex = this.dna[randomIndex]
+     let newBase = returnRandBase()
+     while(currentIndex === newBase){
+      newBase = returnRandBase()
+     }
+     this.dna[randomIndex] = newBase
+     return this.dna
+    }
+  }
+}
 
 
 
