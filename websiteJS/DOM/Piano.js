@@ -63,11 +63,39 @@ nextOne.addEventListener('click', function() {
 
 
 // Write anonymous event handler property and function for the second progress button
+nextTwo.addEventListener('click', function(){
+ nextThree.hidden = false 
+ nexttwo.hidden = true 
+ document.getElementById('word-five') = 'DEAR'
+ document.getElementById('word-six') = 'FRI-'
+ lastLyric.style.display = 'inline-block'
 
-
-
+ document.getElementById('letter-note-three') = 'G'
+ document.getElementById('letter-note-four') = 'E'
+ document.getElementById('letter-note-five') = 'C'
+ document.getElementById('letter-note-six') = 'B'
+})
 
 // Write anonymous event handler property and function for the third progress button
+nextThree.addEventListener('click', function(){
+  startOver.hidden = false
+  nextThree.hidden = true
+  document.getElementById('word-one') = 'HAP-'
+  document.getElementById('word-two') = 'PY'
+  document.getElementById('word-three') = 'BIRTH'
+  document.getElementById('word-four') = 'DAY'
+  document.getElementById('word-five') = 'TO'
+  document.getElementById('word-six') = 'YOU!'
+  document.getElementById('letter-note-one') ='F' 
+  document.getElementById('letter-note-two') = 'F'
+  document.getElementById('letter-note-three') = 'E' 
+  document.getElementById('letter-note-four') ='C' 
+  document.getElementById('letter-note-five') ='D' 
+  document.getElementById('letter-note-six') ='C' 
+  lastLyric.style.display = 'none' 
+  })
+
+
 
 // This is the event handler property and function for the startOver button
 startOver.onclick = function () {
