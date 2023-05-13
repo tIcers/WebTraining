@@ -57,10 +57,15 @@ startOver.hidden = true;
 nextOne.addEventListener('click', function() {
  nextTwo.hidden = false 
  nextOne.hidden = true
+ document.getElementById("letter-note-five") ='D' 
+ document.getElementById("letter-note-six") ='C' 
 })
 
 
 // Write anonymous event handler property and function for the second progress button
+
+
+
 
 // Write anonymous event handler property and function for the third progress button
 
