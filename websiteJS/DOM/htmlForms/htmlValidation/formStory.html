@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=open+sans"
+      rel="stylesheet"
+    />
+    <title>form a story</title>
+  </head>
+  <body>
+    <section id="top">
+      <img
+        src="https://content.codecademy.com/courses/learn-html-forms/formastorylogo.svg"
+        alt="form a story logo"
+      />
+    </section>
+
+    <section id="main">
+      <h1>
+        complete the form -<br />
+        complete the story!
+      </h1>
+      <hr />
+      <form action="story.html" method="get">
+        <label for="animal-1">animal:</label>
+        <input type="text" name="animal-1" value="" id="animal-1" required />
+        <input type="submit" name="submit" value="form my story!" />
+        <br />
+        <label for="animal-2">animal:</label>
+        <input type="text" name="animal-2" value="" id="animal-2" required />
+        <input type="submit" name="submit" value="form my story!" />
+        <br />
+        <label for="animal-3">animal:</label>
+        <input type="text" name="animal-3" value="" id="animal-3" required />
+        <input type="submit" name="submit" value="form my story!" />
+        <br />
+        <label for="adj-1">animal:</label>
+        <input type="text" name="adj-1" value="" id="adj-1" required />
+        <input type="submit" name="submit" value="form my story!" />
+        <br />
+        <label for="verb-1">animal:</label>
+        <input type="text" name="verb-1" value="" id="verb-1" required />
+        <input type="submit" name="submit" value="form my story!" />
+        <br />
+        <label for="num-1">animal:</label>
+        <input type="text" name="num-1" value="" id="num-1" required />
+        <input type="submit" name="submit" value="form my story!" />
+      </form>
+      <span> Yes or No </span>
+      <input type="radio" name="answer" value="yes" required id="yes" />
+      <label for="yes">Yes</label>
+      <input type="radio" name="answer" value="no" required id="no" />
+      <label for="no">No</label>
+      <label for="speed">Relative Speed</label>
+      <select id="speed" name="speed">
+        <option value="faster">faster</option>
+        <option value="normal">normal</option>
+        <option value="slow">slow</option>
+        <br />
+        <label for="quote">Motivational Quote</label>
+        <input
+          type="text"
+          name="quote"
+          value="quote"
+          required
+          list="quote-choices"
+        />
+        <datalist id="quote-choices">
+          <option value="winner gets ice cream!">hhhhh</option>
+        </datalist>
+        <br />
+      </select>
+    </section>
+  </body>
+</html>
