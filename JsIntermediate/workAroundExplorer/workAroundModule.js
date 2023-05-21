@@ -1,28 +1,29 @@
 // Add your imports here.
-
+import {getDataByRole, getDataByCompany from './salaryData.js'}
+import {salaryData from './salaryData.js'}
 // Replace the empty array with the appropriate imported function/value
-const getAverageSalaryByRole = (role) => {
-  const roleData = [];
+export const getAverageSalaryByRole = (role) => {
+  const roleData = getDataByRole();
   const salariesOfRole = roleData.map((obj) => obj.salary);
   return calculateAverage(salariesOfRole);
 };
 
 // Replace the empty array with the appropriate imported function/value
-const getAverageSalaryByCompany = (company) => {
-  const companyData = [];
+export const getAverageSalaryByCompany = (company) => {
+  const companyData = getDataByCompany();
   const salariesAtCompany = companyData.map((obj) => obj.salary);
   return calculateAverage(salariesAtCompany);
 };
 
 // Replace the empty array with the appropriate imported function/value
-const getSalaryAtCompany = (role, company) => {
-  const companyData = [];
+export jconst getSalaryAtCompany = (role, company) => {
+  const companyData =  getDataByCompany();
   const roleAtCompany = companyData.find((obj) => obj.role === role);
   return roleAtCompany.salary;
 };
 
 // Replace the empty array with the appropriate imported function/value
-const getIndustryAverageSalary = () => {
+export const getIndustryAverageSalary = () => {
   const allSalaries = [].map((obj) => obj.salary);
   return calculateAverage(allSalaries);
 };
