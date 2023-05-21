@@ -36,3 +36,17 @@ const balloonAttack = (player1, player2) => {
   } else if (player2.balloonCount > player1.balloonCount) return player2.name;
   return "Tie";
 };
+
+
+///const cipher = new ShiftCipher(2);
+// cipher.encrypt('I love to code!'); // returns 'K NQXG VQ EQFG!'
+// cipher.decrypt('K <3 OA RWRRA'); // returns 'i <3 my puppy'
+
+class ShiftCipher(shiftNumber){
+  encrypt(msgToBeEncryped){
+    for(int i = 0; i < msgToBeEncryped.length; i ++){
+        
+}
+}
+
+}
