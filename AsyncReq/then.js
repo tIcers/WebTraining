@@ -1,16 +1,19 @@
 const { checkInventory } = require("./library.js");
 
-const order = [
-  ["sunglasses", 1],
-  ["bags", 2],
-];
+const order = {
+  items: [
+    ["sunglasses", 1],
+    ["bags", 2],
+  ],
+  giftcardBalance: 79.82,
+};
 
-function handleSuccess(resolvedValue) {
-  console.log(resolvedValue);
-}
-
-function handleFailure(rejectReason) {
-  console.log(rejectReason);
-}
-
-checkInventory(order).then(handleSuccess).catch(handleFailure);
+checkInventory(order)
+  .then((resolvedValueArray) => {})
+  .then((resolvedValueArray) => {})
+  .then((successMessage) => {
+    console.log(successMessage);
+  })
+  .catch((errorMessage) => {
+    console.log(errorMessage);
+  });
