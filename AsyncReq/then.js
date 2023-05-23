@@ -9,8 +9,8 @@ function handleSuccess(resolvedValue) {
   console.log(resolvedValue);
 }
 
-function handleFailure(rejectionValue) {
-  console.log(rejectionValue);
+function handleFailure(rejectReason) {
+  console.log(rejectReason);
 }
 
-checkInventory(order).then(handleSuccess, handleFailure);
+checkInventory(order).then(handleSuccess).catch(handleFailure);
