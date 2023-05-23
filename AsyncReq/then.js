@@ -5,4 +5,12 @@ const order = [
   ["bags", 2],
 ];
 
-// Write your code below:
+function handleSuccess(resolvedValue) {
+  console.log(resolvedValue);
+}
+
+function handleFailure(rejectionValue) {
+  console.log(rejectionValue);
+}
+
+checkInventory(order).then(handleSuccess, handleFailure);
