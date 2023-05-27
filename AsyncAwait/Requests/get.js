@@ -1,5 +1,5 @@
 // Information to reach API
-
+// const apiKey = 'e39c21be9925499b9529ff86b862a7f2'
 const url = "https://api.datamuse.com/words?sl=";
 
 // Selects page elements
