@@ -21,7 +21,7 @@ const getSuggestions = () => {
     (networkError) => {
       console.log(networkError.message);
     }.then(jsonResponse => {
-/*         renderRawResponce(jsonResponse) */
+        // renderRawResponce(jsonResponse) 
         renderResponce(jsonResponse)
       })
   );
