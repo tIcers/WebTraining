@@ -7,9 +7,7 @@ const playbtn = document.getelementbyid("playbtn");
 async function getgenres() {
   const genreRequestEndpoint = "genre/movie/list";
   const requestparams = `?apikey=${tmdbkey}`;
-  const urltofetch = `${tmdbbaseurl}${genrerequestendpoint}${requestparams}`;
-  console.log(urltofetch);
-
+  const urlToFetch= `${tmdbbaseurl}${genreRequestEndpoint}${requestparams}`;
   try {
     const response = await fetch(urltofetch);
     if (response.ok) {
@@ -23,8 +21,20 @@ async function getgenres() {
     console.log("Caught error:", error);
   }
 }
-const getmovies = () => {
-  const selectedgenre = getselectedgenre();
+
+async function getmovies() {
+  const selectedGenre = getSelectedGenre();
+  const discoverMovieEndpoint = "discover/movie";
+  const requestparams = `?apikey=${tmdbkey}&with_genres=${selectedGenre}`;
+  const urlToFetch= `${tmdbbaseurl}${discoverMovieEndpoint}?${requestparams}`;
+  try{
+    const response = await fetch(urlToFetch)
+    if(response.ok){
+      jsonResponse = response.json()
+      console.log(jsonResponse)
+      getMovies()
+    }
+  }
 };
 
 const getmovieinfo = () => {};
@@ -36,6 +46,5 @@ const showrandommovie = () => {
     clearcurrentmovie();
   }
 };
-kj;
 getgenres().then(populategenredropdown);
 playbtn.onclick = showrandommovie;
