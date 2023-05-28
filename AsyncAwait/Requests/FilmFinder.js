@@ -4,27 +4,23 @@ const apiKey = process.env.API_KEY;
 const tmdbbaseurl = "https://api.themoviedb.org/3/";
 const playbtn = document.getelementbyid("playbtn");
 
-async const getgenres = () => {
-  const options = {
-    method: "get",
-    headers: {
-      accept: "application/json",
-      authorization:
-        "bearer eyjhbgcioijiuzi1nij9.eyjhdwqioiiymgiynzuynmizmtjjmtmyyme2oge0zgninjmxoduwysisinn1yii6ijyymjdjyzk1mtezmgjkmda2n2mzzwvjmiisinnjb3blcyi6wyjhcglfcmvhzcjdlcj2zxjzaw9uijoxfq.wxuizie4e5feuqayvl-ywso-b0njtckk3xmuruxs6nw",
-    },
-  };
-  const requestparams = `?apikey=tmdbkey`;
-  const urltofetch = `${tmdbbaseurl}${genrerequestendpoint}${requestparams}`
-  console.log(urltofetch)
+async function getgenres() {
+  const genreRequestEndpoint = "genre/movie/list";
+  const requestparams = `?apikey=${tmdbkey}`;
+  const urltofetch = `${tmdbbaseurl}${genrerequestendpoint}${requestparams}`;
+  console.log(urltofetch);
 
   try {
-    const response = await fetch(urltofetch)
-    if(response.ok){
-      const jsonResponse = response.json 
-      console.log(jsonResponse)
+    const response = await fetch(urltofetch);
+    if (response.ok) {
+      const jsonResponse = response.json();
+      console.log(jsonResponse);
+      const genres = jsonResponse.genres;
+      console.log(genres);
+      return genres;
     }
   } catch (error) {
-    
+    console.log("Caught error:", error);
   }
 }
 const getmovies = () => {
@@ -40,6 +36,6 @@ const showrandommovie = () => {
     clearcurrentmovie();
   }
 };
-
+kj;
 getgenres().then(populategenredropdown);
 playbtn.onclick = showrandommovie;
