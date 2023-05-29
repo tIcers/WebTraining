@@ -57,7 +57,7 @@ async function getMovieInfo(movie) {
     console.log(err);
   }
 }
-
+// this is test commit
 // gets a list of movies and ultimately displays the info of a random movie from the list
 async function showRandomMovie() {
   const movieInfo = document.getElementById("movieInfo");
