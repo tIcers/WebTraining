@@ -40,34 +40,34 @@ async function getMovies() {
   }
 }
 
-async function getMovieInfo(movie){
-  const movieId = movie.id
-  const movieEndPoint = `/movie/${movieId}`
-  const requestParams = `?api_key=${apiKey}`
-  const urlToFetch = `${tmdbbaseurl}${movieEndPoint}${requestParams}`
+async function getMovieInfo(movie) {
+  const movieId = movie.id;
+  const movieEndPoint = `/movie/${movieId}`;
+  const requestParams = `?api_key=${apiKey}`;
+  const urlToFetch = `${tmdbbaseurl}${movieEndPoint}${requestParams}`;
 
   try {
-    const response = await fetch(urlToFetch)
-    if(response.ok){
-      const movieInfo = await response.json()
-      console.log(movieInfo)
-      return movieInfo
+    const response = await fetch(urlToFetch);
+    if (response.ok) {
+      const movieInfo = await response.json();
+      console.log(movieInfo);
+      return movieInfo;
     }
+  } catch (err) {
+    console.log(err);
   }
 }
 
-
-
-
-
-
-
 // gets a list of movies and ultimately displays the info of a random movie from the list
-const showRandomMovie = () => {
+async function showRandomMovie() {
   const movieInfo = document.getElementById("movieInfo");
   if (movieInfo.childNodes.length > 0) {
     clearCurrentMovie();
   }
-};
+  const movies = await getMovies();
+  const randomMovie = await getRandomMovie(movies);
+  const info = await getMovieInfo(randomMovie);
+  displayMovie(info);
+}
 getGenres().then(populateGenreDropdown);
 playbtn.onclick = showRandomMovie;
