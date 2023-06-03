@@ -48,3 +48,11 @@ function App() {
 }
 
 export default App;
+
+
+
+function App() {
+  return <Button text =''/>;
+}
+
+export default App
