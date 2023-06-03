@@ -20,3 +20,31 @@ function App() {
 }
 
 export default App;
+
+// pass props to another component
+import Player from './Player.js' 
+
+function app(){
+  return (
+    <Player songName='waka' artist='vim' />
+  )
+}
+
+export default app
+
+// Render Differnt UL based on props
+import React from 'react';
+import Greeting from './Greeting';
+
+function App() {
+  return (
+    <div>
+      <h1>
+        MovieFlix
+      </h1>
+      <Greeting name="Alison" signedIn = { false } />
+    </div>
+  );
+}
+
+export default App;
