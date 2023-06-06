@@ -1,7 +1,7 @@
 import React from "react";
 
-function BodyComponent(props) {
-  return <p>{props.comment}</p>;
+function Body(props) {
+  return <p>comment = {props.commentObject.comment}</p>;
 }
 
-export default BodyComponent;
+export default Body;
