@@ -1,12 +1,11 @@
 import React from "react";
 
-function HeaderComponent(props) {
+function Header(props) {
   return (
     <div>
-      <img src={props.profileImg} />
-      <h1>{props.username}</h1>
+      <img profileImg={props.commentObject.profileImg} />
+      <h1> username = {props.commentObject.username}</h1>
     </div>
   );
 }
-
-export default HeaderComponent;
+export default Header;
