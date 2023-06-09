@@ -1,9 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './Header'
 
 function App() {
+  const headerStyle = {
+    backgroundColor:'purple'
+  }
   return (
-    <div className="App">
+    <div className="App" style={headerStyle}>
+      <Header />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
