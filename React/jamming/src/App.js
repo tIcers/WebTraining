@@ -2,25 +2,14 @@
 import './App.css';
 import Header from './Header'
 import { SearchBar ,SearchButton} from './SearchBar';
-import TrackList from './Tracklist'
+import SearchResults from './SearchResults';
+import Playlist from './Playlist'
+import './content.css'
+
 function App() {
   const headerStyle = {
     backgroundColor:'purple'
   }
-  const trackList = [
-    {
-    id:'1',
-    name:'song 1',
-    artist:'artist 1',
-    album:'album 1',
-    },
-    {
-    id:'2',
-    name:'song 2',
-    artist:'artist 2',
-    album:'album 2',
-    }
-  ]
   return (
     <div className="App" style={headerStyle}>
       <Header />
@@ -29,8 +18,13 @@ function App() {
           <SearchBar/>
           <SearchButton/>
         </div>
-        <div>
-        <TrackList tracks={trackList}/>
+        <div className='content'>
+          <div className='Search-results'>
+          <SearchResults />
+          </div>
+        <div className='playlist'>
+          <Playlist />
+        </div>
         </div>
         <p>
           Edit <code>src/App.js</code> and save to reload.
