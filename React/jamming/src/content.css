@@ -1,0 +1,11 @@
+.content{
+  display:flex;
+}
+
+.search-results {
+  flex:1
+}
+
+.playlist{
+  flex:1;
+}
