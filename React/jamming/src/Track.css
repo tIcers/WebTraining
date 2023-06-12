@@ -10,9 +10,6 @@
 .track-details {
   display: flex;
   justify-content: space-between;
+  font-size: 17px !important;
 }
 
-
-/* .track-list{ */
-/**/
-/* } */
