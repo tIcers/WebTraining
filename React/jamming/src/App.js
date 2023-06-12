@@ -5,6 +5,7 @@ import { SearchBar ,SearchButton} from './SearchBar';
 import SearchResults from './SearchResults';
 import Playlist from './Playlist'
 import './content.css'
+import SaveButton from './SaveButton';
 
 function App() {
   const headerStyle = {
@@ -24,19 +25,9 @@ function App() {
           </div>
         <div className='playlist'>
           <Playlist />
+          <SaveButton />
+          </div>
         </div>
-        </div>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
