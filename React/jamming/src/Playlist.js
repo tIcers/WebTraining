@@ -1,12 +1,13 @@
 import React from 'react'
-
-
-function Playlist({}){
+import PlaylistTrack from './PlaylistTrack'
+function Playlist({tracks}){
   return (
     <div>
       <h2>Playlist</h2>
-
-    </div>
+      {tracks.map((track)=> (
+        <PlaylistTrack key={track.id} track={track}/>
+      ))}
+     </div>
   )
 }
 
