@@ -11,7 +11,7 @@ function Track({track, onAddTrack}){
         <p>{track.artist}</p>
         <p>{track.album}</p>
     </div> 
-      <button onClick={handleAddTrack}>Add</button>
+      <button onClick={handleAddTrack}>+</button>
     </div>
   )
 }
