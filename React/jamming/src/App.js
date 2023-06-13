@@ -6,11 +6,23 @@ import SearchResults from './SearchResults';
 import Playlist from './Playlist'
 import './content.css'
 import SaveButton from './SaveButton';
+import React, { useState } from 'react';
+import PlaylistTrack from './PlaylistTrack';
 
 function App() {
+  const [playlist, setPlaylist] = useState([])
   const headerStyle = {
     backgroundColor:'purple'
   }
+
+  function addTrackToPlayList(track) {
+    const isTrackInPlaylist = playlist.find((PlaylistTrack) => PlaylistTrack.id === track.id)
+
+    if(!isTrackInPlaylist) {
+      setPlaylist([...playlist, track])
+    }
+  }
+
   return (
     <div className="App" style={headerStyle}>
       <Header />
@@ -21,10 +33,10 @@ function App() {
         </div>
         <div className='content'>
           <div className='Search-results'>
-          <SearchResults />
+          <SearchResults onAddTrack ={addTrackToPlayList}/>
           </div>
         <div className='playlist'>
-          <Playlist />
+          <Playlist tracks={playlist}/>
           <SaveButton />
           </div>
         </div>
