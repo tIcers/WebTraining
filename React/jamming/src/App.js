@@ -11,6 +11,7 @@ import PlaylistTrack from './PlaylistTrack';
 
 function App() {
   const [playlist, setPlaylist] = useState([])
+  const [playlistURIs, seatPlaylistURLs] = useState([])
   const headerStyle = {
     backgroundColor:'purple'
   }
@@ -28,6 +29,12 @@ function App() {
     setPlaylist(updatedPlaylist)
   }
 
+  function savePlaylist (trackURIs){
+    console.log('saving playlist:', trackURIs)
+    setPlaylist([])
+    seatPlaylistURLs([])
+  }
+
   return (
     <div className="App" style={headerStyle}>
       <Header />
@@ -41,8 +48,8 @@ function App() {
           <SearchResults onAddTrack ={addTrackToPlayList}/>
           </div>
         <div className='playlist'>
-          <Playlist tracks={playlist} onRemoveTrack={removeTrackFromPlaylist}/>
-          <SaveButton />
+          <Playlist tracks={playlist} onRemoveTrack={removeTrackFromPlaylist} />
+            <SaveButton playlist={playlist} setPlaylist={setPlaylist} />
           </div>
         </div>
       </header>
