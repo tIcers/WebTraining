@@ -1,8 +1,9 @@
 import React from 'react'
 import TrackList from './Tracklist'
-function SearchResults(){
 
-  const trackList = [
+function SearchResults({tracks, onAddTrack}){
+
+  const searchResults = [
     {
     id:'1',
     name:'song 1',
@@ -21,7 +22,7 @@ function SearchResults(){
   return (
     <div>
       <h2>Results</h2>
-      <TrackList tracks={trackList}/>
+      <TrackList tracks={searchResults} onAddTrack ={onAddTrack}/>
     </div>
   )
 }
