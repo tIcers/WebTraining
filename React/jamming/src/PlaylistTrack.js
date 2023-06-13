@@ -1,11 +1,12 @@
 import React from 'react'
-
-function PlaylistTrack({track, onRemoveTrack}){
+import './PlaylistTrack.css'
+function PlaylistTrack({track}){
   return (
     <div className='playlist-track'>
       <h3>{track.name}</h3>
+      <div className='playlist-details'>
       <p>{track.artist} - {track.artist}</p>
-      <button onClick= {()=> onRemoveTrack(track)}>Remove</button>
+      </div>
     </div>
   )
 }
