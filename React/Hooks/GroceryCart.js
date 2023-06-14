@@ -3,14 +3,18 @@ import ItemList from "./ItemList";
 import { produce, pantryItems } from "./storeItems";
 
 export default function GroceryCart() {
-  // declare and initialize state 
 
-  const addItem = () => {
+  const [cart, setCart] = useState([])
  
+
+  const addItem = (item) => {
+    const updatedCart = [...cart, item]
+    setCart(updatedCart)
    };
 
-  const removeItem = () => {
- 
+  const removeItem = (targetIndex) => {
+    const removedCart = cart.filter((_, index) => index !== targetIndex )
+    setCart(removedCart)
   };
 
   return (
