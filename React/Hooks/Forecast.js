@@ -8,9 +8,10 @@ export default function Forecast() {
 
   useEffect(() => {
     alert('Requested data from server...');
-    get('/daily').then((response) => {
+    get(forecastType).then((response) => {
       alert('Response: ' + JSON.stringify(response,'',2));
-    });
+      setData(response.data)
+    }, [forecastType]);
   });
 
   const handleChange = (index) => ({ target }) =>
@@ -18,7 +19,9 @@ export default function Forecast() {
       ...prev,
       [index]: target.value
     }));
-
+  if(!data) {
+    return <p>Loading...</p>
+  }
   return (
     <div className='App'>
       <h1>My Weather Planner</h1>
