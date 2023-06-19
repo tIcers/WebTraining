@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser, logOut } from "../features/session/sessionSlice"
+import { NavLink } from "react-router-dom";
 
 // Import the NavLink component.
 
@@ -15,9 +16,9 @@ export default function Header () {
   // Replace the 4 <a> tags with <NavLink> components
   return (
     <div className="header">
-      <a href="/about">About</a>
-      <a href="/articles">Articles</a>
-      <a href="/categories">Categories</a>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/articles">Articles</NavLink>
+      <NavLink to="/categories">Categories</NavLink>
       {
         currentUser.username
           ? <>
