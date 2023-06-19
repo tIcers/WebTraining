@@ -18,14 +18,14 @@ export default function Header () {
     <div className="header">
       <NavLink to="/about">About</NavLink>
       <NavLink to="/articles">Articles</NavLink>
-      <NavLink to="/categories">Categories</NavLink>
+      <NavLink tj="/categories">Categories</NavLink>
       {
         currentUser.username
           ? <>
-              <a href="/profile">Profile</a>
+              <NavLink to="/profile">Profile</NavLink>
               <button onClick={handleLogout} className="logout"> Log Out </button>
             </>
-          : <a href="/sign-up">Sign Up</a>
+          : <NavLink to="/sign-up">Sign Up</NavLink>
         }
     </div>
   )
