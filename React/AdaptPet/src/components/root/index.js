@@ -1,13 +1,14 @@
 import React from 'react';
 import Navigation from '../navigation';
-// import Outlet
+import { Outlet } from 'react-router-dom';
+// import outlet implement outlet
 
 const Root = () => {
     return (
-        <>
-            <Navigation/>
-            {/* Add an Outlet*/}
-        </>
+        <div>
+      <Navigation/>
+      <Outlet/>
+        </div>
     );
 };
 
