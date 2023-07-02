@@ -1,34 +1,50 @@
-import { createStore } from 'redux';
+const { createStore } = require('redux');
 
-const increment = () => {
-  return { type: 'increment' }
+// Action Creators
+function increment() { 
+  return {type: 'increment'}
 }
 
-const decrement = () => {
-  return { type: 'decrement' }
+function decrement() { 
+  return {type: 'decrement'}
 }
 
+// Reducer / Store
 const initialState = 0;
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'increment':
-      return state + 1;
+      return state + 1; 
     case 'decrement':
-      return state - 1;
+      return state - 1; 
     default:
       return state;
   }
-}
-
+};  
 const store = createStore(countReducer);
 
-// Define your change listener function here.
-function printCountStatus() {
-  console.log(store.getState());
+// HTML Elements
+const counterElement = document.getElementById('counter');
+const incrementer = document.getElementById('incrementer');
+const decrementer = document.getElementById('decrementer');
+
+// Store State Change Listener
+const render = () => {
+  
 }
 
-store.subscribe(printCountStatus);
 
-store.dispatch(decrement()); // store.getState() === -1
-store.dispatch(increment()); // store.getState() === 0
-store.dispatch(increment()); // store.getState() === 1
+// DOM Event Handlers
+const incrementerClicked = () => {
+  
+}
+incrementer.addEventListener('click', incrementerClicked);
+ 
+const decrementerClicked = () => {
+  
+}
+decrementer.addEventListener('click', decrementerClicked);
+
+
+
+
