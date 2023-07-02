@@ -30,18 +30,22 @@ const decrementer = document.getElementById('decrementer');
 
 // Store State Change Listener
 const render = () => {
-  
+  counterElement.innerHTML = store.getState()
 }
 
+
+store.subscribe(render())
+render()
 
 // DOM Event Handlers
 const incrementerClicked = () => {
-  
+ store.dispatch(increment()) 
 }
+
 incrementer.addEventListener('click', incrementerClicked);
  
 const decrementerClicked = () => {
-  
+  store.dispatch(decrement())
 }
 decrementer.addEventListener('click', decrementerClicked);
 
