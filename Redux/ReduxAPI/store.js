@@ -1,54 +1,61 @@
-const { createStore } = require('redux');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
 
-// Action Creators
-function increment() { 
-  return {type: 'increment'}
+// REDUX CODE
+///////////////////////////////////
+
+const toggle = () => {
+  return {type: 'toggle'} 
 }
-
-function decrement() { 
-  return {type: 'decrement'}
-}
-
-// Reducer / Store
-const initialState = 0;
-const countReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'increment':
-      return state + 1; 
-    case 'decrement':
-      return state - 1; 
-    default:
-      return state;
-  }
-};  
-const store = createStore(countReducer);
-
-// HTML Elements
-const counterElement = document.getElementById('counter');
-const incrementer = document.getElementById('incrementer');
-const decrementer = document.getElementById('decrementer');
-
-// Store State Change Listener
-const render = () => {
-  counterElement.innerHTML = store.getState()
-}
-
-
-store.subscribe(render())
-render()
-
-// DOM Event Handlers
-const incrementerClicked = () => {
- store.dispatch(increment()) 
-}
-
-incrementer.addEventListener('click', incrementerClicked);
  
-const decrementerClicked = () => {
-  store.dispatch(decrement())
+const initialState = 'off';
+const lightSwitchReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'toggle':
+      return state === 'on' ? 'off' : 'on';
+    default:
+      return state; 
+  }
+} 
+ 
+const store = createStore(lightSwitchReducer);
+
+// REACT CODE
+///////////////////////////////////
+ 
+// Pass the store's current state as a prop to the LightSwitch component.
+const render = () => {
+  ReactDOM.render(
+    <LightSwitch 
+      state={store.getState()}
+    />,
+    document.getElementById('root')
+  )
 }
-decrementer.addEventListener('click', decrementerClicked);
+ 
+render(); // Execute once to render with the initial state.
+store.subscribe(render); // Re-render in response to state changes.
 
+// Receive the store's state as a prop.
+function LightSwitch(props) {
+  const state = props.state; 
 
-
-
+  // Adjust the UI based on the store's current state.
+  const bgColor = state === 'on' ? 'white' : 'black';
+  const textColor = state === 'on' ? 'black' : 'white';  
+ 
+  // The click handler dispatches an action to the store.
+  const handleLightSwitchClick = () => {
+    store.dispatch(toggle());
+  }
+ 
+  return (  
+    <div style={{background : bgColor, color: textColor}}>
+      <button onClick={handleLightSwitchClick}>
+        {state}
+      </button>
+    </div>
+  )
+}
+ 
