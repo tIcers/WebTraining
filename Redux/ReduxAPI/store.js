@@ -1,11 +1,11 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
 const increment = () => {
-  return {type:'increment'}
+  return { type: 'increment' }
 }
 
 const decrement = () => {
-  return {type:'decrement'}
+  return { type: 'decrement' }
 }
 
 const initialState = 0;
@@ -14,7 +14,7 @@ const countReducer = (state = initialState, action) => {
     case 'increment':
       return state + 1;
     case 'decrement':
-      return state -1
+      return state - 1;
     default:
       return state;
   }
@@ -22,11 +22,13 @@ const countReducer = (state = initialState, action) => {
 
 const store = createStore(countReducer);
 
-store.dispatch(increment())
-store.dispatch(increment())
+// Define your change listener function here.
+function printCountStatus() {
+  console.log(store.getState());
+}
 
-store.dispatch(decrement())
-store.dispatch(decrement())
-store.dispatch(decrement())
+store.subscribe(printCountStatus);
 
-console.log(store.getState())
+store.dispatch(decrement()); // store.getState() === -1
+store.dispatch(increment()); // store.getState() === 0
+store.dispatch(increment()); // store.getState() === 1
