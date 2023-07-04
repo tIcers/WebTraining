@@ -5,7 +5,15 @@ export const addItem = (itemToAdd) => {
   };
 };
 
-// Create your changeItemQuantity action creator here.
+export const changeItemQuantity = (name, newQuantity) => {
+  return {
+    type: 'cart/changeItemQuantity',
+    payload: {
+      name:name,
+      newQuantity:newQuantity
+    }
+  }
+}
 
 
 const initialCart = {};
@@ -28,10 +36,14 @@ export const cartReducer = (cart = initialCart, action) => {
       const { name, newQuantity } = action.payload;
       const itemToUpdate = cart[name];
 
-      // Create a copy of itemToUpdate and update the quantity prop.
-
-      // Return a copy of the cart with the updatedItem included.
-      return {};
+      const updatedItem = {
+        ...itemToUpdate,
+        quantity:newQuantity
+      }
+      return {
+      ...cart, 
+      [name]:updatedItem
+      }
     }
     default: {
       return cart;
