@@ -3,20 +3,18 @@ import React from 'react';
 import { Score } from './features/score/Score.js';
 import { Board } from './features/board/Board.js';
 import { useDispatch } from 'react-redux';
-import { setBoard , flipCard} from './boardSlice';
+import { setBoard , flipCard, resetCards} from './boardSlice';
 
 
 const App = () => {
-  
+  const startGameHandler = () => {
    const dispatch = useDispatch()
    dispatch(setBoard())
-
-  const startGameHandler = () => {
-
   };
 
   const tryAgainHandler = () => {
-    // Add action dispatch below
+    const dispatch = useDispatch()
+    dispatch(resetCards)
     
   };
 
