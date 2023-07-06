@@ -1,15 +1,14 @@
 import React from 'react';
 let cardLogo = "https://static-assets.codecademy.com/Courses/Learn-Redux/matching-game/codecademy_logo.png";
-import { useSelector } from 'react-redux';
-import { selectVisibleIDs } from './boardSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { flipCard, selectVisibleIDs } from './boardSlice';
 
 export const Card = ({ id, contents }) => {
   const visibleIDs = useSelector(selectVisibleIDs)
   
-  
-  // flip card action
   const flipHandler = (id) => {
-    // Add action dispatch below
+    const dispatch = useDispatch()
+    dispatch(flipCard(id))
     
   };
 
@@ -35,7 +34,7 @@ export const Card = ({ id, contents }) => {
 
   // 3rd if statement
   // implement number of flipped cards check
-  if (false) {
+  if (visibleIDs.length === 2) {
     click = () => {};
   }
 

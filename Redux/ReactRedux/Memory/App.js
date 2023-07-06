@@ -3,7 +3,7 @@ import React from 'react';
 import { Score } from './features/score/Score.js';
 import { Board } from './features/board/Board.js';
 import { useDispatch } from 'react-redux';
-import { setBoard } from './boardSlice';
+import { setBoard , flipCard} from './boardSlice';
 
 
 const App = () => {
@@ -12,6 +12,7 @@ const App = () => {
    dispatch(setBoard())
 
   const startGameHandler = () => {
+
   };
 
   const tryAgainHandler = () => {
