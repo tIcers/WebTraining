@@ -1,11 +1,10 @@
 import React from 'react';
-// Add import statements below
-
-
 let cardLogo = "https://static-assets.codecademy.com/Courses/Learn-Redux/matching-game/codecademy_logo.png";
+import { useSelector } from 'react-redux';
+import { selectVisibleIDs } from './boardSlice';
 
 export const Card = ({ id, contents }) => {
-  // Add selected data and dispatch variables below
+  const visibleIDs = useSelector(selectVisibleIDs)
   
   
   // flip card action
@@ -23,7 +22,7 @@ export const Card = ({ id, contents }) => {
 
   // 1st if statement
   // implement card id array membership check
-  if (false) {
+  if (visibleIDs.includes(id)) {
     cardText = contents;
     click = () => {};
   }
