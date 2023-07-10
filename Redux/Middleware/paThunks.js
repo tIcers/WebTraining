@@ -16,6 +16,7 @@ const loadRecipes = createAsyncThunk(
     return response.data
   }
 )
+// this will be these after thunks
 // 1.allRecipes/loadRecipes/pending
 // 2. aallRecipes/loadRecipes/fulfilled
 // 3. allRecipes/loadRecipes/rejected
