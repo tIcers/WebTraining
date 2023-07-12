@@ -7,4 +7,4 @@ let playGame = (userInput) => {
 	testNumber(input);
 };
 
-
+process.stdin.on('data', playGame) // getting user input
