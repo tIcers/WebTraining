@@ -37,6 +37,13 @@ class Field {
       console.log('Please enter u, d, l or r for movement\n')
     }
   }
+  isOutOfBound(){
+    const numRow = this.field.length
+    const numCol = this.field[row].length
+    const {playerRow, playerCol} = this
+
+    return playerRow >=  numRow || playerCol >= numCol || playerRow < 0 || playerCol < 0
+  }
 }
 
 const myField = new Field([
