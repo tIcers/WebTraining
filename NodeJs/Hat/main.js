@@ -69,5 +69,15 @@ while(gameIsRunning){
     gameIsRunning = false
   }else{
     myField.updateField(direction)
+    if(myField.isOutOfBound()){
+      console.log('You are out of Bound')
+      gameIsRunning = false
+    }else if (myField.isHoleFound()) {
+      console.log('You fell in hole rn!\n Game Over')
+      gameIsRunning = false
+    }else if(myField.isHatFound()){
+      console.log("You found hat! Congrats!")
+      gameIsRunning = false
+    }
   }
 }
