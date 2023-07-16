@@ -44,6 +44,13 @@ class Field {
 
     return playerRow >=  numRow || playerCol >= numCol || playerRow < 0 || playerCol < 0
   }
+  isHatFound(){
+    return this.field[this.playerRow][this.playerCol] ==='^'
+   }
+  isHoleFound(){
+    return this.field[this.playerRow][this.playerCol] ==='O';
+  }
+
 }
 
 const myField = new Field([
