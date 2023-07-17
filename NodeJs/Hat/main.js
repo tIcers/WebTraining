@@ -1,5 +1,4 @@
-const prompt = require('prompt-sync')({ sigint: true });
-
+const readLine = require('readLine')
 const hat = '^';
 const hole = 'O';
 const fieldCharacter = '░';
@@ -73,12 +72,25 @@ class Field {
     return field
   }
 }
+const rl = readLine.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+})
+
+function prompt(question) {
+  return new Promise((resolve) => {
+    rl.question(question, (answer) => {
+      resolve(answer.trim());
+    });
+  });
+}
+async function playGame(){
 
 let gameIsRunning = true
 
-const userHeight = prompt('Height?\n')()
-const userWidth = prompt('Width?\n')()
-const percentage = prompt('Percentage?\n')()
+const userHeight = await prompt('Height?\n')
+const userWidth = await prompt('Width?\n')
+const percentage = await prompt('Percentage?\n')
 const myField = new Field(Field.generateField(userHeight, userWidth, percentage))
 
 while(gameIsRunning){
@@ -87,17 +99,24 @@ while(gameIsRunning){
   if(direction ==='quit'){
     console.log('Game Over, you quit!')
     gameIsRunning = false
+    break;
   }else{
     myField.updateField(direction)
     if(myField.isOutOfBound()){
       console.log('You are out of Bound')
       gameIsRunning = false
+      break;
     }else if (myField.isHoleFound()) {
       console.log('You fell in hole rn!\n Game Over')
       gameIsRunning = false
+      break;
     }else if(myField.isHatFound()){
       console.log("You found hat! Congrats!")
       gameIsRunning = false
+      break
     }
   }
 }
+}
+
+playGame()
