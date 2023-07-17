@@ -39,9 +39,8 @@ class Field {
   }
   isOutOfBound(){
     const numRow = this.field.length
-    const numCol = this.field[row].length
+    const numCol = this.field[this.playerRow].length
     const {playerRow, playerCol} = this
-
     return playerRow >=  numRow || playerCol >= numCol || playerRow < 0 || playerCol < 0
   }
   isHatFound(){
@@ -50,16 +49,37 @@ class Field {
   isHoleFound(){
     return this.field[this.playerRow][this.playerCol] ==='O';
   }
+  static generateField(height, width, percentage){
+    const field = []
+    const totalTiles = height * width
+    let numOfHoles = Math.floor((totalTiles * percentage) / 100 )
+    const numOfHats = Math.random(Math.random() * height)
+    const hatRow  = Math.random(Math.random() * height)
+    const hatCol  = Math.random(Math.random() * width)
 
+    for(let row = 0; row < height; row ++){
+      field[row] = []
+      for(let col = 0; col < width; col++){
+        if(row === hatRow && col === hatCol){
+          field[row][col] = '^'
+         }else if(numOfHoles > 0 && Math.random() < numOfHoles / 100){
+          field[row][col] = 'O'
+          numOfHoles--
+        }else{
+          field[row][col] = '░'
+        }
+      }
+    }
+    return field
+  }
 }
 
-const myField = new Field([
-  ['*', '░', 'O'],
-  ['░', 'O', '░'],
-  ['░', '^', '░'],
-]);
-
 let gameIsRunning = true
+
+const userHeight = prompt('Height?\n')()
+const userWidth = prompt('Width?\n')()
+const percentage = prompt('Percentage?\n')()
+const myField = new Field(Field.generateField(userHeight, userWidth, percentage))
 
 while(gameIsRunning){
   myField.print()
