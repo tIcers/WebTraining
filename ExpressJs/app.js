@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const { seedElements } = require('./utils');
+const {updateElement, getIndexById} = require('./utils')
 
 app.use(express.static('public'));
 
@@ -22,6 +23,20 @@ app.get('/expressions/:id', (req, res, next) => {
     res.status(404).send('Expressions are not found')
   }
 }) 
+
+app.put('/expressions/:id', (req, res, next) => {
+  const idToUpdate = parseInt(req.params.id)
+  const updateExpression = req.query
+
+  const expressionIndex = getIndexById(idToUpdate, expressions)
+
+  if(expressionIndex !== -1){
+    const updateElement = updateElement(idToUpdate, updateExpression, expressionIndex)
+    req.send(updateElement)
+  }else{
+    res.status(404).send('expression not found')
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
