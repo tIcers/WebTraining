@@ -1,65 +1,105 @@
 const express = require('express');
 const app = express();
-const { seedElements } = require('./utils');
-const {updateElement, getIndexById} = require('./utils')
 
+// Serves Express Yourself website
 app.use(express.static('public'));
 
-const PORT = process.env.PORT || 4001;
+const { getElementById, getIndexById, updateElement,
+        seedElements, createElement } = require('./utils');
 
 const expressions = [];
 seedElements(expressions, 'expressions');
+const animals = [];
+seedElements(animals, 'animals');
+
+const PORT = process.env.PORT || 4001;
 
 app.get('/expressions', (req, res, next) => {
-  res.send(expressions)
-  console.log(req);
+  res.send(expressions);
 });
 
 app.get('/expressions/:id', (req, res, next) => {
-  const foundExpression = getElementById(req.params.id, expressions)
-  if (foundExpression){
-    res.send(foundExpression)
-  }else{
-    res.status(404).send('Expressions are not found')
+  const foundExpression = getElementById(req.params.id, expressions);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
   }
-}) 
+});
 
+app.get('/animals', (req, res, next) => {
+  res.send(animals)
+})
+
+app.get('/animals/:id', (req, res, next) => {
+  const foundAnimal = getElementById(req.params.id, animals)
+  if(foundAnimal){
+    res.send(foundAnimal)
+  }else{
+    res.status(404).send()
+  }
+})
 app.put('/expressions/:id', (req, res, next) => {
-  const idToUpdate = parseInt(req.params.id)
-  const updateExpression = req.query
-
-  const expressionIndex = getIndexById(idToUpdate, expressions)
-
-  if(expressionIndex !== -1){
-    const updateElement = updateElement(idToUpdate, updateExpression, expressionIndex)
-    req.send(updateElement)
-  }else{
-    res.status(404).send('expression not found')
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    updateElement(req.params.id, req.query, expressions);
+    res.send(expressions[expressionIndex]);
+  } else {
+    res.status(404).send();
   }
+});
+
+app.put('/animals/:id', (req, res, next) => {
+  const animalIndex = getIndexById(req.params.id, 
+animals)
+  if (animalIndex !== -1){
+    updateElement(req.params.id, req.query, animals)
+    res.send(animals[animalIndex])
+  }else{
+    res.status(404).send()
+  }
+
 })
 
 app.post('/expressions', (req, res, next) => {
-  const newElement = createElement('expressions', req.query)
+  const receivedExpression = createElement('expressions', req.query);
+  if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else {
+    res.status(400).send();
+  }
+});
 
-  if (newElement){
-    expressions.push(newElement)
-    res.status(201).send(newElement)
+app.post('/animals', (req, res, next) => {
+  const receivedAnimal = createElement('animals', req.query)
+  if(receivedAnimal){
+    animals.push(receivedAnimal)
+    res.status(201).send(receivedAnimal)
   }else{
-    res.status(400).send('Invalid expressions')
+    res.status(400).send()
   }
 })
 
 app.delete('/expressions/:id', (req, res, next) => {
-  const expressionIndex = getIndexById(req.params.id, expressions)
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    expressions.splice(expressionIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
 
-  if(expressionIndex!== -1){
-    expressions.splice(expressionIndex, 1)
+app.delete('/animals/:id', (req, res, next) => {
+  const animalIndex = getIndexById(req.params.id, animals)
+  if(animalIndex !== -1){
+    animals.splice(animalIndex, 1)
     res.status(204).send()
   }else{
     res.status(404).send()
   }
 })
-
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on port ${PORT}`); 
 });
