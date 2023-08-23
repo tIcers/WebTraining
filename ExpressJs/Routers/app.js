@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const expressionsRouter = express.Router()
+const expressionsRouter = require('./expressions.js')
 
 const { getElementById, getIndexById, updateElement,
   seedElements, createElement } = require('./utils');
@@ -9,18 +9,12 @@ const PORT = process.env.PORT || 4001;
 // Use static server to serve the Express Yourself Website
 app.use(express.static('public'));
 
-const expressions = [];
-seedElements(expressions, 'expressions');
 const animals = [];
 seedElements(animals, 'animals');
 
+app.use('/expressions', expressionsRouter);
 
-app.use('/expressions', expressionsRouter)
 
-// Get all expressions
-expressionsRouter.get('/', (req, res, next) => {
-  res.send(expressions);
-});
 
 // Get a single expression
 app.get('/expressions/:id', (req, res, next) => {
@@ -116,4 +110,3 @@ app.delete('/animals/:id', (req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
 });
-
