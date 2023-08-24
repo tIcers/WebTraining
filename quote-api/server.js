@@ -24,7 +24,20 @@ app.get('/quotes', (req, res, next) => {
   }
 })
 
+app.post('/quotes', (req, res, next) => {
+  const {quote, person} = req.query 
 
+  if(!quotes || !person){
+    res.status(404).send("Both quote and person are requried in the query")
+  }else{
+    const newQuotes = {
+      quote:quote, 
+      person:person
+    }
+    quotes.push(newQuotes)
+    res.status(201).send(newQuotes)
+  }
+})
 
 app.listen(PORT, (req, res, next )=> {
   console.log(`${PORT} is listening..`)
