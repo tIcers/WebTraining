@@ -14,8 +14,16 @@ app.get('/quotes/random', (req, res, next) => {
 })
 
 app.get('/quotes', (req, res, next) => {
+  const person = req.query.person
 
+  if(!person){
+    res.send(quotes)
+  }else{
+    const personQuotes = quotes.filter(quotes => quotes.person === person)
+    res.send(personQuotes)
+  }
 })
+
 
 
 app.listen(PORT, (req, res, next )=> {
