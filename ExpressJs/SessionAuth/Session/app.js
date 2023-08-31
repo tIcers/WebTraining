@@ -1,15 +1,16 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 4001;
+const store = new session.MemoryStore();
 
-const store = new session.MemoryStore()
 app.use(
   session({
-    secret:'sdfe293rGdf',
-    resave:false,
-    saveUninitialized:false,
+    secret: "D53gxl41G",
+    cookie:{maxAge:172800000, secure:true, sameSite:'none'},
+    resave: false,
+    saveUninitialized: false,
     store
   })
 );
