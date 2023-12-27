@@ -1,8 +1,8 @@
 module.exports = {
   confidentialClients: [
     {
-      clientId: "codecademy",
-      clientSecret: "codec@demy",
+      clientId: "",
+      clientSecret: "",
       grants: ["client_credentials"],
     },
   ],
