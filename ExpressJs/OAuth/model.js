@@ -17,7 +17,13 @@ const saveToken = (token, client, user) => {
   db.tokens.push(token);
   return token;
 };
+
+const getUserFromClient = (client) => {
+  return {};
+};
+
 module.exports = {
   getClient: getClient,
   saveToken: saveToken,
+  getUserFromClient: getUserFromClient,
 };
