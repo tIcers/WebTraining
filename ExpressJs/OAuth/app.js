@@ -14,9 +14,24 @@ const oauth = new OAuth2Server({
   allowBearerTokensInQueryString: true,
 });
 
+const authenticateRequest = (req, res, next) => {
+  let request = new OAuth2Server.Request(req);
+  let response = new OAuth2Server.Request(res);
+
+  return oauth
+    .authenticate(request, response)
+    .then(() => {
+      next();
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
+
 const obtainToken = (req, res) => {
   let request = new OAuth2Server.Request(req);
   let response = new OAuth2Server.Response(res);
+
   return oauth
     .token(request, response)
     .then((token) => {
@@ -27,8 +42,7 @@ const obtainToken = (req, res) => {
     });
 };
 
-app.all("/auth", obtainToken) => {
-})
+app.all("/auth", obtainToken);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/home.html"));
@@ -37,6 +51,9 @@ app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public/login.html"));
 });
 
+app.get("/secret", authenticateRequest, function (req, res) {
+  res.send("Welcome to the secret area!");
+});
 app.get("/secret", (req, res) => {
   res.send("Welcome to the secret area.");
 });
