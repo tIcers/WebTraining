@@ -22,8 +22,16 @@ const getUserFromClient = (client) => {
   return {};
 };
 
+const getAccessToken = (accessToken) => {
+  let tokens = db.tokens.filter((savedToken) => {
+    return savedToken.accessToken === accessToken;
+  });
+  return tokens[0];
+};
+
 module.exports = {
   getClient: getClient,
-  saveToken: saveToken,
+  saveTokens: saveTokens,
   getUserFromClient: getUserFromClient,
+  getAccessToken: getAccessToken,
 };
